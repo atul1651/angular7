@@ -1,0 +1,48 @@
+<div *ngIf="responseData2;else other_content">
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>firstitem</th>
+          <th>index</th>
+          <th>userId</th>
+          <th>id</th>
+          <th>title</th>
+          <th>body</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of responseData2; let index=index;let firstItem = firstItem"
+          (click)="selectedPost(post)">
+          <td>{{post.firstItem}}</td>
+          <td>{{index+1}}</td>
+          <td>{{post.userId}}</td>
+          <td>{{post.id}}</td>
+          <td>{{post.title}}</td>
+          <td>{{post.body}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #other_content>
+  <span class="loading-text">
+    Loading please wait..
+  </span>
+</ng-template>
+
+<app-contact [selectedPosthero]="post"></app-contact>
+
+
+users:
+<div *ngIf="responseData1">
+  <ul *ngFor="let user of responseData1">
+    <li>{{user.id}}</li>
+    <li>{{user.name}}</li>
+    <li>{{user.username}}</li>
+    <li>{{user.email}}</li>
+    <li>{{user.website}}</li>
+    <li>{{user.phone}}</li>
+    <li>{{user.address.street}}</li>
+  </ul>
+</div>
